@@ -1,9 +1,11 @@
+
+
 " vim:set ts=8 sts=2 sw=2 tw=0: (この行に関しては:help modelineを参照)
 "
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 28-Jun-2011.
+" Last Change: 04-Jan-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -243,3 +245,25 @@ endif
 let $PATH = simplify($VIM . '/../../MacOS') . ':' . $PATH
 set migemodict=$VIMRUNTIME/dict/migemo-dict
 set migemo
+
+
+"================= my setting ===============================================
+"
+set nocompatible
+filetype off
+"
+set runtimepath+=~/vimfiles/neobundle.vim.git/
+call neobundle#rc(expand('~/.bundle'))
+"
+NeoBundle 'git://github.com/Shougo/neocomplcache.git'
+NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
+NeoBundle 'git://github.com/Shougo/unite.vim.git'
+NeoBundle 'git://github.com/Shougo/vimfiler.git'
+NeoBundle 'git://github.com/Shougo/vimshell.git'
+NeoBundle 'ZenCoding.vim'
+NeoBundle 'fontzoom.vim'
+NeoBundle 'surround.vim'
+NeoBundle 'The-NERD-Commenter'
+
+filetype plugin on
+filetype indent on
