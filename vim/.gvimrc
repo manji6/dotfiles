@@ -171,7 +171,7 @@ endif
 
 "---------------------------------------------------------------------------
 " カラー設定:
-"colorscheme morning
+colorscheme morning
 
 "---------------------------------------------------------------------------
 " フォント設定:
@@ -261,6 +261,19 @@ endif
 "
 " 検索文字列をハイライトしない(_vimrcではなく_gvimrcで設定する必要がある)
 "set nohlsearch
+
+" カーソル行をハイライト
+set cursorline
+" カレントウィンドウにのみ罫線を引く
+"augroup cch
+"	autocmd! cch
+"	autocmd WinLeave * set nocursorline
+"	autocmd WinEnter,BufRead * set cursorline
+"augroup END
+"
+":hi clear CursorLine
+":hi CursorLine gui=underline
+"highlight CursorLine ctermbg=black guibg=black
 
 "---------------------------------------------------------------------------
 " 印刷に関する設定:

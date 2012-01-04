@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 04-Jan-2012.
+" Last Change: 05-Jan-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -134,7 +134,7 @@ set smartcase
 " 編集に関する設定:
 "
 " タブの画面上での幅
-set tabstop=8
+set tabstop=4
 " タブをスペースに展開しない (expandtab:展開する)
 set noexpandtab
 " 自動的にインデントする (noautoindent:インデントしない)
@@ -154,11 +154,11 @@ set formatoptions+=mM
 " GUI固有ではない画面表示の設定:
 "
 " 行番号を非表示 (number:表示)
-set nonumber
+set number
 " ルーラーを表示 (noruler:非表示)
 set ruler
 " タブや改行を表示 (list:表示)
-set nolist
+set list
 " どの文字でタブや改行を表示するかを設定
 "set listchars=tab:>-,extends:<,trail:-,eol:<
 " 長い行を折り返して表示 (nowrap:折り返さない)
@@ -178,7 +178,7 @@ set title
 " ファイル操作に関する設定:
 "
 " バックアップファイルを作成しない (次行の先頭の " を削除すれば有効になる)
-"set nobackup
+set nobackup
 
 
 "---------------------------------------------------------------------------
@@ -247,8 +247,11 @@ set migemodict=$VIMRUNTIME/dict/migemo-dict
 set migemo
 
 
-"================= my setting ===============================================
+" ================= my setting ===============================================
 "
+" Write: @manji6
+" ============================================================================
+
 set nocompatible
 filetype off
 "
@@ -260,6 +263,8 @@ NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
+NeoBundle 'git://github.com/taku-o/vim-toggle.git'
+NeoBundle 'https://github.com/mattn/gist-vim'
 NeoBundle 'ZenCoding.vim'
 NeoBundle 'fontzoom.vim'
 NeoBundle 'surround.vim'
@@ -267,3 +272,47 @@ NeoBundle 'The-NERD-Commenter'
 
 filetype plugin on
 filetype indent on
+
+" ##############################################
+" [all]
+" added filetype
+" ##############################################
+au BufRead,BufNewFile *.phl		set filetype=php fenc=euc-jp
+au BufRead,BufNewFile *.tpl		set filetype=html fenc=euc-jp
+au BufRead,BufNewFile *.twig		set filetype=html fenc=utf-8
+au BufRead,BufNewFile *_js.tpl		set filetype=javascript fenc=euc-jp
+au BufRead,BufNewFile *.js		set filetype=javascript fenc=utf-8
+
+" #########################################
+" [common] vim common setting
+" #########################################
+" ステータスラインに表示する情報の指定
+set statusline=%n\:%y%F\ \|%{(&fenc!=''?&fenc:&enc).'\|'.&ff.'\|'}%m%r%=<%l/%L:%p%%>
+" ステータスラインの色
+highlight StatusLine   term=NONE cterm=NONE ctermfg=black ctermbg=white
+" どの文字でタブや改行を表示するかを設定(tab:xy,extends(折り返し行):c,trail(空白行):c,precedes(右スクロール中に行頭が表示されていない場合):c)
+set listchars=tab:>-,trail:-,nbsp:%,extends:<,precedes:<
+highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
+"入力モード時、ステータスラインのカラーを変更
+augroup InsertHook
+	autocmd!
+	autocmd InsertEnter * highlight StatusLine guifg=#ccdc90 guibg=#2E4340
+	autocmd InsertLeave * highlight StatusLine guifg=#2E4340 guibg=#ccdc90
+augroup END
+"日本語入力をリセット
+au BufNewFile,BufRead * set iminsert=0
+
+" #########################################
+" [common] cursol highlight setting
+" #########################################
+"Escの2回押しでハイライト消去
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
+
+
+" #########################################
+" [gist-vim] setting
+" #########################################
+"let g:github_user = ''
+"let g:github_token = ''
+let g:gist_privates = 1 " 1:default post type is 'Private'
+
