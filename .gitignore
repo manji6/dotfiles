@@ -2,3 +2,4 @@
 *.swp
 tmp/
 cache/
+.vimrc_profile

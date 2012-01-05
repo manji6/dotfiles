@@ -1,0 +1,21 @@
+# ===================================================
+# jQuery Snippet
+# 
+# Author: manji6( Twitter:@manji6 )<ryosuke.sawada@gmail.com>
+# Require: neocomplcache.vim
+# ===================================================
+
+# prefix word is ""
+
+snippet     ajax
+abbr        jQuery.ajax(Object) #Ajax
+	$.ajax({
+		'url': '${1:url[Str]}',
+		'data': ${2:getParam[Obj/Str]},
+		'dataType': '${3:dataType[Str]}',
+		'timeout': ${4:timeout(ms)[Num]},
+		'success': function(data,success,xhr){
+			${0://Callback Action is here...}
+		}
+	});
+

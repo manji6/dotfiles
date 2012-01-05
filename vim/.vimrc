@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 05-Jan-2012.
+" Last Change: 06-Jan-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -269,9 +269,11 @@ NeoBundle 'ZenCoding.vim'
 NeoBundle 'fontzoom.vim'
 NeoBundle 'surround.vim'
 NeoBundle 'The-NERD-Commenter'
+NeoBundle 'git://github.com/nono/jquery.vim.git'
 
 filetype plugin on
 filetype indent on
+
 
 " ##############################################
 " [all]
@@ -281,7 +283,7 @@ au BufRead,BufNewFile *.phl		set filetype=php fenc=euc-jp
 au BufRead,BufNewFile *.tpl		set filetype=html fenc=euc-jp
 au BufRead,BufNewFile *.twig		set filetype=html fenc=utf-8
 au BufRead,BufNewFile *_js.tpl		set filetype=javascript fenc=euc-jp
-au BufRead,BufNewFile *.js		set filetype=javascript fenc=utf-8
+au BufRead,BufNewFile *.js		set filetype=jquery fenc=utf-8
 
 " #########################################
 " [common] vim common setting
@@ -312,7 +314,28 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 " #########################################
 " [gist-vim] setting
 " #########################################
-"let g:github_user = ''
-"let g:github_token = ''
 let g:gist_privates = 1 " 1:default post type is 'Private'
+
+
+
+" #########################################
+" [all] setting userProfile
+" This file is not created.
+" #########################################
+if 1 && filereadable($HOME.'/.vimrc_profile')
+  source $HOME/.vimrc_profile
+endif
+
+
+" #########################################
+" [neocomplcache] setting
+" #########################################
+let g:neocomplcache_enable_at_startup = 1
+
+" スニペットファイルの配置場所
+let g:neocomplcache_snippets_dir = $HOME.'/vimfiles/snippets/'
+
+" (mapping)Snippet展開 is <C-k>
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
+smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
