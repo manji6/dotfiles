@@ -1,1 +1,52 @@
-dotfiles用管理repository
+﻿manji6用dotfiles用管理repository.
+
+【ベース】
+MacVim(like kaoriya)を派生。ベースはKaoriyaをExtend。
+
+【動作対象】
+・Mac
+・Windows(MinGWとEGit入れればOK)
+
+【カスタマイズしてる機能】
+・NeoBundle.vim を追加(submodule)
+・vimproc を追加(Windowsでgitコマンドを実行できるように。submodule)
+・各種拡張子表示など
+・端末に依存しそうな設定は.vimrcに書かず、.vimrc_profileを設置すれば読み込むように
+　(.vimrc_profile_origを同梱してあるので名前を変えて利用)
+
+【展開ファイルイメージ】
+$HOMEディレクトリ配下
+ -.vimrc
+ -.gvimrc
+ -.vimrc_profile
+ -vimfiles/
+ -.bundle/ (これは後でNeoBundleInstallコマンド叩いて設置される)
+
+
+【使い方】
+1.これをgit cloneする
+  git clone git://github.com/manji6/dotfiles.git
+
+2.submodule登録してる2つのbundleを取ってくる
+  git submodule init
+
+3.$HOME(~/)配下に対して以下のファイルのシンボリックリンクを貼る
+  -.vimrc
+  -.gvimrc
+  -.vimrc_profile
+  -vimfiles/
+4.Vimを実行して問題なく動いてるか確認
+  :scriptnames
+5.問題なければNeoBundleでBundleを一気にCloneしてインストール
+  :NeoBundleInstall
+
+
+【困った時】
+Q1.Windows環境で「LF will be replaced by CRLF in hogehoge」って出るんだけど
+　A1."git config --global core.autoCRLF false"
+Q2.Windows環境でsshの鍵設定できないんだけど
+　A2.Puttyのssh-agent入れるか、~/.ssh/配下に
+Q3.vimprop使えないんだけど
+　A3.MinGW入れてmakeする。"make -f make_mingw.mak"
+Q4.NeoBundleInstall使えないんだけど
+　A4.コマンドプロンプトで"git --help"叩けてる？叩けないなら叩けるようにEGitとかWindows用のGitコンソールインストールして。
