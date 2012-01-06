@@ -242,9 +242,11 @@ endif
 "
 " MacVim-KaoriYa固有の設定
 "
-let $PATH = simplify($VIM . '/../../MacOS') . ':' . $PATH
-set migemodict=$VIMRUNTIME/dict/migemo-dict
-set migemo
+if has('gui_macvim')
+  let $PATH = simplify($VIM . '/../../MacOS') . ':' . $PATH
+  set migemodict=$VIMRUNTIME/dict/migemo-dict
+  set migemo
+endif
 
 
 " ================= my setting ===============================================
@@ -252,12 +254,25 @@ set migemo
 " Write: @manji6
 " ============================================================================
 
+" ##############################################
+" [vimproc]
+" setting
+" ##############################################
+if has('win32') || has('win64')
+  set runtimepath+=~/vimfiles/vimproc/
+endif
+
+" ##############################################
+" [NeoBundle]
+" setting bundle
+" ##############################################
 set nocompatible
 filetype off
-"
-set runtimepath+=~/vimfiles/neobundle.vim.git/
-call neobundle#rc(expand('~/.bundle'))
-"
+
+  set runtimepath+=~/vimfiles/neobundle.vim.git/
+  call neobundle#rc(expand('~/.bundle'))
+
+
 NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
@@ -270,6 +285,8 @@ NeoBundle 'fontzoom.vim'
 NeoBundle 'surround.vim'
 NeoBundle 'The-NERD-Commenter'
 NeoBundle 'git://github.com/nono/jquery.vim.git'
+NeoBundle 'git://github.com/thinca/vim-ref.git'
+NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 
 filetype plugin on
 filetype indent on
@@ -290,11 +307,14 @@ au BufRead,BufNewFile *.js		set filetype=jquery fenc=utf-8
 " #########################################
 " ステータスラインに表示する情報の指定
 set statusline=%n\:%y%F\ \|%{(&fenc!=''?&fenc:&enc).'\|'.&ff.'\|'}%m%r%=<%l/%L:%p%%>
+
 " ステータスラインの色
 highlight StatusLine   term=NONE cterm=NONE ctermfg=black ctermbg=white
+
 " どの文字でタブや改行を表示するかを設定(tab:xy,extends(折り返し行):c,trail(空白行):c,precedes(右スクロール中に行頭が表示されていない場合):c)
 set listchars=tab:>-,trail:-,nbsp:%,extends:<,precedes:<
 highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
+
 "入力モード時、ステータスラインのカラーを変更
 augroup InsertHook
 	autocmd!
@@ -304,12 +324,39 @@ augroup END
 "日本語入力をリセット
 au BufNewFile,BufRead * set iminsert=0
 
+"share clipboard with other applications
+set clipboard=unnamed
+
+" don't allow to send selected text to the clipboard automatically in visual mode
+set guioptions-=a
+
+" show wrap break
+set showbreak=++++
+
 " #########################################
 " [common] cursol highlight setting
 " #########################################
 "Escの2回押しでハイライト消去
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
 
+" hilight cursor line
+autocmd WinEnter *  setlocal cursorline
+autocmd WinLeave *  setlocal nocursorline
+set cursorline
+
+" #########################################
+" [common] regist "Utility Command"
+" #########################################
+" encoding commands
+command! Cp932 edit ++enc=cp932
+command! Eucjp edit ++enc=euc-jp
+command! Iso2022jp edit ++enc=iso-2202-jp
+command! Utf8 edit ++enc=utf-8
+command! Jis Iso2022jp
+command! Sjis ++enc=cp932
+
+" make me go to next line
+set whichwrap=b,s,h,l,<,>,[,]
 
 " #########################################
 " [gist-vim] setting
@@ -317,14 +364,12 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 let g:gist_privates = 1 " 1:default post type is 'Private'
 
 
+" #########################################
+" [unite.vim] setting
+" #########################################
 
-" #########################################
-" [all] setting userProfile
-" This file is not created.
-" #########################################
-if 1 && filereadable($HOME.'/.vimrc_profile')
-  source $HOME/.vimrc_profile
-endif
+" open recent file
+command! UniteRecent Unite file_mru
 
 
 " #########################################
@@ -336,6 +381,15 @@ let g:neocomplcache_enable_at_startup = 1
 let g:neocomplcache_snippets_dir = $HOME.'/vimfiles/snippets/'
 
 " (mapping)Snippet展開 is <C-k>
-imap <C-k> <Plug>(neocomplcache_snippets_expand)
+imap <Tab> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
+
+
+" #########################################
+" [all] setting userProfile
+" This file is not created.
+" #########################################
+if 1 && filereadable($HOME.'/.vimrc_profile')
+  source $HOME/.vimrc_profile
+endif

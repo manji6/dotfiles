@@ -18,12 +18,12 @@ set cpo&vim
 "
 
 if !exists("syntax_on")
-  syntax on
+		syntax on
 endif
 
 if !exists("colors_name")
-    " Use the macvim color scheme by default
-    colorscheme macvim
+		" Use the macvim color scheme by default
+		colorscheme macvim
 endif
 
 " To make tabs more readable, the label only contains the tail of the file
@@ -42,28 +42,28 @@ set printexpr=system('open\ -a\ Preview\ '.v:fname_in)\ +\ v:shell_error
 " to the user .vimrc
 "
 if !exists("macvim_skip_cmd_opt_movement")
-  no   <D-Left>       <Home>
-  no!  <D-Left>       <Home>
-  no   <M-Left>       <C-Left>
-  no!  <M-Left>       <C-Left>
+		no   <D-Left>       <Home>
+		no!  <D-Left>       <Home>
+		no   <M-Left>       <C-Left>
+		no!  <M-Left>       <C-Left>
 
-  no   <D-Right>      <End>
-  no!  <D-Right>      <End>
-  no   <M-Right>      <C-Right>
-  no!  <M-Right>      <C-Right>
+		no   <D-Right>      <End>
+		no!  <D-Right>      <End>
+		no   <M-Right>      <C-Right>
+		no!  <M-Right>      <C-Right>
 
-  no   <D-Up>         <C-Home>
-  ino  <D-Up>         <C-Home>
-  map  <M-Up>         {
-  imap <M-Up>         <C-o>{
+		no   <D-Up>         <C-Home>
+		ino  <D-Up>         <C-Home>
+		map  <M-Up>         {
+		imap <M-Up>         <C-o>{
 
-  no   <D-Down>       <C-End>
-  ino  <D-Down>       <C-End>
-  map  <M-Down>       }
-  imap <M-Down>       <C-o>}
+		no   <D-Down>       <C-End>
+		ino  <D-Down>       <C-End>
+		map  <M-Down>       }
+		imap <M-Down>       <C-o>}
 
-  imap <M-BS>         <C-w>
-  imap <D-BS>         <C-u>
+		imap <M-BS>         <C-w>
+		imap <D-BS>         <C-u>
 endif " !exists("macvim_skip_cmd_opt_movement")
 
 
@@ -73,32 +73,32 @@ endif " !exists("macvim_skip_cmd_opt_movement")
 " to the user .vimrc (not .gvimrc!).
 "
 if exists("macvim_hig_shift_movement")
-  " Shift + special movement key (<S-Left>, etc.) and mouse starts insert mode
-  set selectmode=mouse,key
-  set keymodel=startsel,stopsel
+		" Shift + special movement key (<S-Left>, etc.) and mouse starts insert mode
+		set selectmode=mouse,key
+		set keymodel=startsel,stopsel
 
-  " HIG related shift + special movement key mappings
-  nn   <S-D-Left>     <S-Home>
-  vn   <S-D-Left>     <S-Home>
-  ino  <S-D-Left>     <S-Home>
-  nn   <S-M-Left>     <S-C-Left>
-  vn   <S-M-Left>     <S-C-Left>
-  ino  <S-M-Left>     <S-C-Left>
+		" HIG related shift + special movement key mappings
+		nn   <S-D-Left>     <S-Home>
+		vn   <S-D-Left>     <S-Home>
+		ino  <S-D-Left>     <S-Home>
+		nn   <S-M-Left>     <S-C-Left>
+		vn   <S-M-Left>     <S-C-Left>
+		ino  <S-M-Left>     <S-C-Left>
 
-  nn   <S-D-Right>    <S-End>
-  vn   <S-D-Right>    <S-End>
-  ino  <S-D-Right>    <S-End>
-  nn   <S-M-Right>    <S-C-Right>
-  vn   <S-M-Right>    <S-C-Right>
-  ino  <S-M-Right>    <S-C-Right>
+		nn   <S-D-Right>    <S-End>
+		vn   <S-D-Right>    <S-End>
+		ino  <S-D-Right>    <S-End>
+		nn   <S-M-Right>    <S-C-Right>
+		vn   <S-M-Right>    <S-C-Right>
+		ino  <S-M-Right>    <S-C-Right>
 
-  nn   <S-D-Up>       <S-C-Home>
-  vn   <S-D-Up>       <S-C-Home>
-  ino  <S-D-Up>       <S-C-Home>
+		nn   <S-D-Up>       <S-C-Home>
+		vn   <S-D-Up>       <S-C-Home>
+		ino  <S-D-Up>       <S-C-Home>
 
-  nn   <S-D-Down>     <S-C-End>
-  vn   <S-D-Down>     <S-C-End>
-  ino  <S-D-Down>     <S-C-End>
+		nn   <S-D-Down>     <S-C-End>
+		vn   <S-D-Down>     <S-C-End>
+		ino  <S-D-Down>     <S-C-End>
 endif " exists("macvim_hig_shift_movement")
 
 
@@ -144,10 +144,10 @@ unlet s:cpo_save
 " に変数g:gvimrc_local_finishに非0な値が設定されていた場合には、それ以上の設
 " 定ファイルの読込を中止する。
 if 1 && filereadable($VIM . '/gvimrc_local.vim')
-  source $VIM/gvimrc_local.vim
-  if exists('g:gvimrc_local_finish') && g:gvimrc_local_finish != 0
-    finish
-  endif
+		source $VIM/gvimrc_local.vim
+		if exists('g:gvimrc_local_finish') && g:gvimrc_local_finish != 0
+				finish
+		endif
 endif
 
 "---------------------------------------------------------------------------
@@ -155,44 +155,44 @@ endif
 " 数g:gvimrc_first_finishに非0な値が設定されていた場合には、それ以上の設定
 " ファイルの読込を中止する。
 if 0 && exists('$HOME') && filereadable($HOME . '/.gvimrc_first.vim')
-  unlet! g:gvimrc_first_finish
-  source $HOME/.gvimrc_first.vim
-  if exists('g:gvimrc_first_finish') && g:gvimrc_first_finish != 0
-    finish
-  endif
+		unlet! g:gvimrc_first_finish
+		source $HOME/.gvimrc_first.vim
+		if exists('g:gvimrc_first_finish') && g:gvimrc_first_finish != 0
+				finish
+		endif
 endif
 
 "---------------------------------------------------------------------------
 " Bram氏の提供する設定例をインクルード (別ファイル:vimrc_example.vim)。これ
 " 以前にg:no_gvimrc_exampleに非0な値を設定しておけばインクルードしない。
 if 1 && (!exists('g:no_gvimrc_example') || g:no_gvimrc_example == 0)
-  source $VIMRUNTIME/gvimrc_example.vim
+		source $VIMRUNTIME/gvimrc_example.vim
 endif
 
 "---------------------------------------------------------------------------
 " カラー設定:
-colorscheme morning
+"colorscheme morning
 
 "---------------------------------------------------------------------------
 " フォント設定:
 "
 if has('win32')
-  " Windows用
-  set guifont=MS_Gothic:h12:cSHIFTJIS
-  "set guifont=MS_Mincho:h12:cSHIFTJIS
-  " 行間隔の設定
-  set linespace=1
-  " 一部のUCS文字の幅を自動計測して決める
-  if has('kaoriya')
-    set ambiwidth=auto
-  endif
+		" Windows用
+		set guifont=VL_Gothic:h10:cSHIFTJIS
+		"set guifont=MS_Mincho:h12:cSHIFTJIS
+		" 行間隔の設定
+		set linespace=1
+		" 一部のUCS文字の幅を自動計測して決める
+		if has('kaoriya')
+				set ambiwidth=auto
+		endif
 elseif has('gui_macvim')
-  set guifont=Osaka-Mono:h14
+		set guifont=Osaka-Mono:h14
 elseif has('mac')
-  set guifont=Osaka－等幅:h14
+		set guifont=Osaka－等幅:h14
 elseif has('xfontset')
-  " UNIX用 (xfontsetを使用)
-  set guifontset=a14,r14,k14
+		" UNIX用 (xfontsetを使用)
+		set guifontset=a14,r14,k14
 endif
 
 "---------------------------------------------------------------------------
@@ -211,17 +211,17 @@ set cmdheight=2
 " 日本語入力に関する設定:
 "
 if has('multi_byte_ime') || has('xim') || has('gui_macvim')
-  " IME ON時のカーソルの色を設定(設定例:紫)
-  highlight CursorIM guibg=Purple guifg=NONE
-  " 挿入モード・検索モードでのデフォルトのIME状態設定
-  set iminsert=0 imsearch=0
-  if has('xim') && has('GUI_GTK')
-    " XIMの入力開始キーを設定:
-    " 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
-    "set imactivatekey=s-space
-  endif
-  " 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
-  "inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
+		" IME ON時のカーソルの色を設定(設定例:紫)
+		highlight CursorIM guibg=Purple guifg=NONE
+		" 挿入モード・検索モードでのデフォルトのIME状態設定
+		set iminsert=0 imsearch=0
+		if has('xim') && has('GUI_GTK')
+				" XIMの入力開始キーを設定:
+				" 下記の s-space はShift+Spaceの意味でkinput2+canna用設定
+				"set imactivatekey=s-space
+		endif
+		" 挿入モードでのIME状態を記憶させない場合、次行のコメントを解除
+		"inoremap <silent> <ESC> <ESC>:set iminsert=0<CR>
 endif
 
 "---------------------------------------------------------------------------
@@ -253,7 +253,7 @@ set mousehide
 " る。
 "
 if &guioptions =~# 'M'
-  let &guioptions = substitute(&guioptions, '[mT]', '', 'g')
+		let &guioptions = substitute(&guioptions, '[mT]', '', 'g')
 endif
 
 "---------------------------------------------------------------------------
@@ -291,10 +291,10 @@ set cursorline
 "
 " 印刷用フォント
 if has('printer')
-  if has('win32')
-    set printfont=MS_Mincho:h12:cSHIFTJIS
-    "set printfont=MS_Gothic:h12:cSHIFTJIS
-  endif
+		if has('win32')
+				set printfont=MS_Mincho:h12:cSHIFTJIS
+				"set printfont=MS_Gothic:h12:cSHIFTJIS
+		endif
 endif
 
 " Copyright (C) 2011 KaoriYa/MURAOKA Taro
@@ -303,6 +303,20 @@ endif
 "
 " MacVim-KaoriYa固有の設定
 "
-let $SSH_ASKPASS = simplify($VIM . '/../../MacOS') . '/macvim-askpass'
-set noimdisable
-set imdisableactivate
+if has('gui_macvim')
+		let $SSH_ASKPASS = simplify($VIM . '/../../MacOS') . '/macvim-askpass'
+		set noimdisable
+		set imdisableactivate
+endif
+
+
+" ================= my setting ===============================================
+"
+" Write: @manji6
+" ============================================================================
+
+" 制御文字のハイライトをダークグレイに
+highlight SpecialKey term=underline ctermfg=darkgray guifg=darkgray
+
+" カラースキーマ
+colorscheme desert
