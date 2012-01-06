@@ -370,18 +370,27 @@ let g:gist_privates = 1 " 1:default post type is 'Private'
 
 " open recent file
 command! UniteRecent Unite file_mru
+" カレントディレクトリ対象でエクスプローラ開く
+command! UniteCDir UniteWithBufferDir file -buffer-name=files
 
-
-" #########################################
+" ########################################
 " [neocomplcache] setting
 " #########################################
 let g:neocomplcache_enable_at_startup = 1
+" 1:smart case機能を有効化
+let g:neocomplcache_enable_smart_case = 1
+" 1:_区切りの補完を有効化
+let g:neocomplcache_enable_underbar_completion = 1
+" 1:残り1つになったら自動決定
+let g:neocomplcache_enable_auto_select = 0
+" 文字削除時は補完をキャンセル
+inoremap <expr><C-h> neocomplcache#smart_close_popup()."\<C-h>"
 
 " スニペットファイルの配置場所
 let g:neocomplcache_snippets_dir = $HOME.'/vimfiles/snippets/'
 
 " (mapping)Snippet展開 is <C-k>
-imap <Tab> <Plug>(neocomplcache_snippets_expand)
+imap <C-k> <Plug>(neocomplcache_snippets_expand)
 smap <C-k> <Plug>(neocomplcache_snippets_expand)
 
 

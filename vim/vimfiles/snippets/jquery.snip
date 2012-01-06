@@ -5,9 +5,36 @@
 # Require: neocomplcache.vim
 # ===================================================
 
-# prefix word is ""
+# prefix word is "jq"
 
-snippet     ajax
+
+# ----- [Core] ---------------------------------------
+
+
+# ----- [Selector] ---------------------------------------
+
+
+# ----- [Attributes] ---------------------------------------
+
+
+# ----- [Traversing] ---------------------------------------
+
+
+# ----- [Manipulation] ---------------------------------------
+
+
+# ----- [Events] ---------------------------------------
+
+
+# ----- [Effects] ---------------------------------------
+snippet     jqanimate
+abbr        jQuery.fn.animate(params,duration,easing,callback) #set CustomAnimation for Element
+    $(${1:Selector}).animate({${2:CSS[Obj]}},${3:duration(ms)[Int]},${4:easing("linear/swing")},${0:Callback});
+
+
+# ----- [Ajax] ---------------------------------------
+
+snippet     jqajax
 abbr        jQuery.ajax(Object) #Ajax
 	$.ajax({
 		'url': '${1:url[Str]}',
@@ -15,7 +42,16 @@ abbr        jQuery.ajax(Object) #Ajax
 		'dataType': '${3:dataType[Str]}',
 		'timeout': ${4:timeout(ms)[Num]},
 		'success': function(data,success,xhr){
-			${0://Callback Action is here...}
+			${0:// Callback Action is here...}
 		}
 	});
+
+# ----- [Utilities] ---------------------------------------
+
+snippet     jqeach
+abbr        jQuery.each(collection,callback) #Iterator Method
+    $.each(${1:Collection[Arr/Obj]},function(index,value){
+        ${0:// Callback Action is here...}
+    });
+
 
