@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 06-Jan-2012.
+" Last Change: 10-Jan-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -149,6 +149,9 @@ set showmatch
 set wildmenu
 " テキスト挿入中の自動折り返しを日本語に対応させる
 set formatoptions+=mM
+" インデント幅
+set shiftwidth=4
+
 
 "---------------------------------------------------------------------------
 " GUI固有ではない画面表示の設定:
