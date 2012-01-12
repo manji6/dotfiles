@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 06-Jan-2012.
+" Last Change: 13-Jan-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -67,7 +67,11 @@ endfor
 " ファイルを読込む時にトライする文字エンコードの順序を確定する。漢字コード自
 " 動判別機能を利用する場合には別途iconv.dllが必要。iconv.dllについては
 " README_w32j.txtを参照。ユーティリティスクリプトを読み込むことで設定される。
-source $VIM/plugins/kaoriya/encode_japan.vim
+
+" added gvim の場合は読まないようにする
+if has('gui_running')
+  source $VIM/plugins/kaoriya/encode_japan.vim
+endif
 " メッセージを日本語にする (Windowsでは自動的に判断・設定されている)
 if !(has('win32') || has('mac')) && has('multi_lang')
   if !exists('$LANG') || $LANG.'X' ==# 'X'
@@ -199,7 +203,8 @@ if has('unix') && !has('gui_running') && !has('gui_macvim')
   elseif uname =~? "freebsd"
     set term=builtin_cons25
   elseif uname =~? "Darwin"
-    set term=beos-ansi
+    "set term=beos-ansi
+    set term=dtterm
   else
     set term=builtin_xterm
   endif
@@ -232,8 +237,10 @@ endif
 set formatexpr=autofmt#japanese#formatexpr()
 
 " vimdoc-ja: 日本語ヘルプを無効化する.
-if kaoriya#switch#enabled('disable-vimdoc-ja')
-  let &rtp = join(filter(split(&rtp, ','), 'v:val !~ "vimdoc-ja"'), ',')
+if has('gui_running')
+  if kaoriya#switch#enabled('disable-vimdoc-ja')
+    let &rtp = join(filter(split(&rtp, ','), 'v:val !~ "vimdoc-ja"'), ',')
+  endif
 endif
 
 " Copyright (C) 2011 KaoriYa/MURAOKA Taro
