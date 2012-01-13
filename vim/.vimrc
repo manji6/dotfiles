@@ -207,7 +207,8 @@ if has('unix') && !has('gui_running') && !has('gui_macvim')
     set term=builtin_cons25
   elseif uname =~? "Darwin"
     "set term=beos-ansi
-    set term=dtterm
+    "set term=dtterm
+	set term=xterm-256color
   else
     set term=builtin_xterm
   endif
@@ -382,6 +383,9 @@ let g:gist_privates = 1 " 1:default post type is 'Private'
 command! UniteRecent Unite file_mru
 " カレントディレクトリ対象でエクスプローラ開く
 command! UniteCDir UniteWithBufferDir file -buffer-name=files
+
+" bookmarkとかで開くときにvimfilerを使う
+call unite#custom_default_action('source/bookmark/directory' , 'vimfiler')
 
 " ########################################
 " [neocomplcache] setting
