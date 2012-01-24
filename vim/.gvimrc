@@ -188,6 +188,8 @@ if has('win32')
 		endif
 elseif has('gui_macvim')
 		set guifont=Osaka-Mono:h14
+		"set guifont=VL_Gothic:h10:cSHIFTJIS
+		set guifont=Ricty:h14
 elseif has('mac')
 		set guifont=Osaka－等幅:h14
 elseif has('xfontset')

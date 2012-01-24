@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 13-Jan-2012.
+" Last Change: 18-Jan-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -298,6 +298,8 @@ NeoBundle 'The-NERD-Commenter'
 NeoBundle 'git://github.com/nono/jquery.vim.git'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
+NeoBundle 'git://github.com/scrooloose/nerdtree.git'
+NeoBundle 'svn.vim'
 
 filetype plugin on
 filetype indent on
