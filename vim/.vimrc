@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 01-Feb-2012.
+" Last Change: 13-Feb-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -295,15 +295,20 @@ NeoBundle 'ZenCoding.vim'
 NeoBundle 'fontzoom.vim'
 NeoBundle 'surround.vim'
 NeoBundle 'The-NERD-Commenter'
-NeoBundle 'git://github.com/nono/jquery.vim.git'
 NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 NeoBundle 'svn.vim'
+" JavaScript
+NeoBundle 'JavaScript-syntax'
+
+" jQuery
+NeoBundle 'jQuery'
 NeoBundle 'bash-support.vim'
 NeoBundle 'YankRing.vim'
 NeoBundle 'php.vim'
 NeoBundle 'git://github.com/godlygeek/tabular.git'
+NeoBundle 'Lokaltog/vim-powerline'
 
 filetype plugin on
 filetype indent on
@@ -360,6 +365,9 @@ nmap <ESC><ESC> :nohlsearch<CR><ESC>
 autocmd WinEnter *  setlocal cursorline
 autocmd WinLeave *  setlocal nocursorline
 set cursorline
+
+" 保存時に行末の空白を除去する
+autocmd BufWritePre * :%s/\s\+$//ge
 
 " #########################################
 " [common] regist "Utility Command"
