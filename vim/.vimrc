@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 13-Feb-2012.
+" Last Change: 14-Feb-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -322,7 +322,7 @@ au BufRead,BufNewFile *.phl		set filetype=php fenc=euc-jp
 au BufRead,BufNewFile *.tpl		set filetype=html fenc=euc-jp
 au BufRead,BufNewFile *.twig		set filetype=html fenc=utf-8
 au BufRead,BufNewFile *_js.tpl		set filetype=javascript fenc=euc-jp
-au BufRead,BufNewFile *.js		set filetype=jquery fenc=utf-8
+au BufRead,BufNewFile *.js		set filetype=javascript fenc=utf-8
 
 " #########################################
 " [common] vim common setting
