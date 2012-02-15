@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 13-Feb-2012.
+" Last Change: 14-Feb-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -301,6 +301,7 @@ NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 NeoBundle 'svn.vim'
 " JavaScript
 NeoBundle 'JavaScript-syntax'
+NeoBundle 'pangloss/vim-javascript'
 
 " jQuery
 NeoBundle 'jQuery'
@@ -430,3 +431,8 @@ smap <C-k> <Plug>(neocomplcache_snippets_expand)
 if 1 && filereadable($HOME.'/.vimrc_profile')
   source $HOME/.vimrc_profile
 endif
+
+
+autocmd FileType javascript :compiler gjslint
+ autocmd QuickfixCmdPost make copen
+
