@@ -5,7 +5,7 @@
 " An example for a Japanese version vimrc file.
 " 日本語版のデフォルト設定ファイル(vimrc) - Vim7用試作
 "
-" Last Change: 15-Feb-2012.
+" Last Change: 01-May-2012.
 " Maintainer:  MURAOKA Taro <koron.kaoriya@gmail.com>
 "
 " 解説:
@@ -288,6 +288,8 @@ NeoBundle 'git://github.com/Shougo/neocomplcache.git'
 NeoBundle 'git://github.com/Shougo/neobundle.vim.git'
 NeoBundle 'git://github.com/Shougo/unite.vim.git'
 NeoBundle 'git://github.com/Shougo/vimfiler.git'
+NeoBundle 'git://github.com/Sixeight/unite-grep.git'
+NeoBundle 'git://github.com/kmnk/vim-unite-svn.git'
 NeoBundle 'git://github.com/Shougo/vimshell.git'
 NeoBundle 'git://github.com/taku-o/vim-toggle.git'
 NeoBundle 'https://github.com/mattn/gist-vim'
@@ -299,17 +301,18 @@ NeoBundle 'git://github.com/thinca/vim-ref.git'
 NeoBundle 'git://github.com/thinca/vim-quickrun.git'
 NeoBundle 'git://github.com/scrooloose/nerdtree.git'
 NeoBundle 'svn.vim'
+NeoBundle 'bash-support.vim'
+NeoBundle 'YankRing.vim'
+NeoBundle 'php.vim'
+NeoBundle 'git://github.com/godlygeek/tabular.git'
+NeoBundle 'Lokaltog/vim-powerline'
+NeoBundle 'vimgrep'
 " JavaScript
 NeoBundle 'JavaScript-syntax'
 NeoBundle 'pangloss/vim-javascript'
 
 " jQuery
 NeoBundle 'jQuery'
-NeoBundle 'bash-support.vim'
-NeoBundle 'YankRing.vim'
-NeoBundle 'php.vim'
-NeoBundle 'git://github.com/godlygeek/tabular.git'
-NeoBundle 'Lokaltog/vim-powerline'
 
 filetype plugin on
 filetype indent on
@@ -319,11 +322,11 @@ filetype indent on
 " [all]
 " added filetype
 " ##############################################
-au BufRead,BufNewFile *.phl		set filetype=php fenc=euc-jp
-au BufRead,BufNewFile *.tpl		set filetype=html fenc=euc-jp
-au BufRead,BufNewFile *.twig		set filetype=html fenc=utf-8
-au BufRead,BufNewFile *_js.tpl		set filetype=javascript fenc=euc-jp
-au BufRead,BufNewFile *.js		set filetype=javascript fenc=utf-8
+au BufRead,BufNewFile *.phl		set filetype=php
+au BufRead,BufNewFile *.tpl		set filetype=html
+au BufRead,BufNewFile *.twig		set filetype=html
+au BufRead,BufNewFile *_js.tpl		set filetype=javascript
+au BufRead,BufNewFile *.js		set filetype=javascript
 
 " #########################################
 " [common] vim common setting
@@ -355,6 +358,9 @@ set guioptions-=a
 
 " show wrap break
 set showbreak=++++
+
+" バッファを変更可能にする
+set modifiable
 
 " #########################################
 " [common] cursol highlight setting
@@ -388,6 +394,15 @@ set whichwrap=b,s,h,l,<,>,[,]
 " [gist-vim] setting
 " #########################################
 let g:gist_privates = 1 " 1:default post type is 'Private'
+
+
+
+
+" #########################################
+" [vimfiler.vim] setting
+" #########################################
+let g:vimfiler_as_default_explorer=1
+let g:vimfiler_safe_mode_by_default=0
 
 
 " #########################################
